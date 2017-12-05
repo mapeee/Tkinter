@@ -8,9 +8,6 @@
 # Copyright:   (c) mape 2017
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-import sys
-sys.path.append('C:\\Program Files (x86)\\Anaconda2\\lib\\lib-tk')
-
 from Tkinter import *
 
 root = Tk()
