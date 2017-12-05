@@ -8,10 +8,11 @@
 # Copyright:   (c) mape 2017
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-from Tkinter import *
+import Tkinter
+import os
 
 root = Tk()
-logo = PhotoImage(file="C:\\Users\\mape\\Desktop\\test.gif")
+logo = PhotoImage(file=os.getcwd()+"\\test.gif")
 w1 = Label(root, image=logo).pack(side="right")
 explanation = """At present, only GIF and PPM/PGM
 formats are supported, but an interface
