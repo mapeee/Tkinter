@@ -8,7 +8,7 @@
 # Copyright:   (c) mape 2017
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-import Tkinter
+from Tkinter import *
 import os
 
 root = Tk()
