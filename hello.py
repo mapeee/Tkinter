@@ -16,6 +16,9 @@ import os
 #Starte Tk
 root = Tk()
 
+root.title("Mape's Erreichbarkeitstools")
+root.geometry('250x250')
+
 #Functions
 def close_window ():
     root.destroy()
@@ -47,7 +50,7 @@ root.config(menu=menubar)
 
 #Insert logo/Pics
 logo = PhotoImage(file=os.getcwd()+"\\test.gif")
-w1 = Label(root, image=logo).pack(side="right")
+w1 = Label(root, image=logo).place(x=0, y=100)
 
 #Insert Text
 explanation = """At present, only GIF and PPM/PGM
@@ -57,7 +60,7 @@ formats to be added easily."""
 w2 = Label(root,
            justify=LEFT,
            padx = 10,
-           text=explanation).pack(side="left")
+           text=explanation).place(x=0, y=0)
 
 #End
 root.mainloop()
