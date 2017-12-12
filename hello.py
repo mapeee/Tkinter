@@ -13,9 +13,8 @@ from tkFileDialog   import askopenfilename
 import os
 
 
-#Starte Tk
+#Starte Tk und definiere Fenster
 root = Tk()
-
 root.title("Mape's Erreichbarkeitstools")
 root.geometry('250x250')
 
@@ -27,8 +26,8 @@ def rechnen ():
     print "test"
 
 def callback():
-    name= askopenfilename()
-    print name
+    name = askopenfilename()
+    v.set(name)
 
 #Insert Menu-bar
 menubar = Menu(root)
@@ -48,6 +47,12 @@ menubar.add_cascade(label="Hilfe")
 menubar.add_cascade(label="Rechnen", menu=zahl)
 root.config(menu=menubar)
 
+#Insert Field
+Label(root, text="Pfad:",font=("Calibri", 11, "bold")).place(x=0,y=70)
+v = StringVar()
+e1 = Entry(root, textvariable=v)
+e1.place(x=40,y=70,height=22)
+
 #Insert logo/Pics
 logo = PhotoImage(file=os.getcwd()+"\\test.gif")
 w1 = Label(root, image=logo).place(x=0, y=100)
@@ -57,10 +62,7 @@ explanation = """At present, only GIF and PPM/PGM
 formats are supported, but an interface
 exists to allow additional image file
 formats to be added easily."""
-w2 = Label(root,
-           justify=LEFT,
-           padx = 10,
-           text=explanation).place(x=0, y=0)
+w2 = Label(root,justify=LEFT,text=explanation).place(x=0, y=0)
 
 #End
 root.mainloop()
