@@ -9,21 +9,18 @@
 # Licence:     <free>
 #-------------------------------------------------------------------------------
 from Tkinter import *
-from tkFileDialog   import askopenfilename
+from tkFileDialog import askopenfilename
 import os
-
+import func
 
 #Starte Tk und definiere Fenster
 root = Tk()
 root.title("Mape's Erreichbarkeitstools")
 root.geometry('250x250')
 
-#Functions
+#--Functions--#
 def close_window ():
     root.destroy()
-
-def rechnen ():
-    print "test"
 
 def callback():
     name = askopenfilename()
@@ -38,7 +35,7 @@ filemenu.add_command(label="Open",font=("Calibri", 11, "bold"), command=callback
 filemenu.add_command(label="Ende",font=("Calibri", 11, "bold"), command=close_window)
 
 zahl = Menu(menubar, tearoff=0)
-zahl.add_command(label="1",font=("Calibri", 11, "bold"),command=rechnen)
+zahl.add_command(label="1",font=("Calibri", 11, "bold"),command=func.rechnen)
 zahl.add_command(label="5",font=("Calibri", 11, "bold"))
 zahl.add_command(label="13",font=("Calibri", 11, "bold"))
 
