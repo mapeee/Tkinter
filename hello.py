@@ -12,6 +12,8 @@ from Tkinter import *
 from tkFileDialog import askopenfilename
 import os
 import func
+import visum_func
+import win32com.client.dynamic
 
 #Starte Tk und definiere Fenster
 root = Tk()
@@ -22,16 +24,24 @@ root.geometry('300x300')
 def close_window ():
     root.destroy()
 
+
 def matrizen():
-    root.geometry('600x250')
+    v1 = StringVar()
+    v2 = StringVar()
+    root.geometry('600x300')
     Label(root, text="Berechnung von Matrizen",font=("Calibri", 14, "bold")).place(x=300,y=0)
     #Insert Field
-    Label(root, text="Pfad:",font=("Calibri", 11, "bold")).place(x=300,y=50)
-    e1 = Entry(root, textvariable=v)
-    e1.place(x=340,y=50,height=22)
+    Label(root, text="Pfad:",font=("Calibri", 10, "bold")).place(x=300,y=50)
+    Label(root, text="VISUM:",font=("Calibri", 10, "bold")).place(x=300,y=80)
+    e1 = Entry(root, textvariable=v1)
+    e1.place(x=350,y=50,height=27)
+    e2 = Entry(root, textvariable=v2)
+    e2.place(x=350,y=80,height=27)
 
     #Insert Button
-    button = Button(root, text='Starten', width=25, command=func.ausgeben).place(x=300,y=100)
+    button = Button(root, text='Start', width=25, command=visum_func).place(x=300,y=120)
+    button_open = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v1)).place(x=500,y=50)
+    button_VISUM = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v2)).place(x=500,y=80)
 
 
 #Insert Menu-bar
