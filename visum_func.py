@@ -18,10 +18,13 @@ def main():
 if __name__ == '__main__':
     main()
 
+##path = "C:\\Users\\mape\\Desktop\\Testnetz_Tarif.ver"
+
 def open(path):
+    path = path.get()
     VISUM = win32com.client.dynamic.Dispatch("Visum.Visum.15")
     VISUM.loadversion(path)
-    print "yo"
-    return VISUM
+    a = len(VISUM.net.Stops.GetAll)
 
-
+    print "--Stops: "+str(a)+"--"
+    print "--erfolgreich durchgefuehrt--"

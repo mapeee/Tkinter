@@ -24,25 +24,42 @@ root.geometry('300x300')
 def close_window ():
     root.destroy()
 
-
 def matrizen():
-    v1 = StringVar()
-    v2 = StringVar()
     root.geometry('600x300')
     Label(root, text="Berechnung von Matrizen",font=("Calibri", 14, "bold")).place(x=300,y=0)
+
+    #Variablen
+    v1 = StringVar()
+    v2 = StringVar()
+    v3 = StringVar()
+    tkvar = StringVar(root)
+    tkvar.set("Auswahl")
+    choices = [""]
+
     #Insert Field
     Label(root, text="Pfad:",font=("Calibri", 10, "bold")).place(x=300,y=50)
-    Label(root, text="VISUM:",font=("Calibri", 10, "bold")).place(x=300,y=80)
     e1 = Entry(root, textvariable=v1)
     e1.place(x=350,y=50,height=27)
+    Label(root, text="VISUM:",font=("Calibri", 10, "bold")).place(x=300,y=80)
     e2 = Entry(root, textvariable=v2)
     e2.place(x=350,y=80,height=27)
+    Label(root, text="HDF5:",font=("Calibri", 10, "bold")).place(x=300,y=110)
+    e3 = Entry(root, textvariable=v3)
+    e3.place(x=350,y=110,height=27)
+
+    #Insert Dropdown
+    Label(root, text="Group:",font=("Calibri", 10, "bold")).place(x=300,y=140)
+    choices = lambda:func.gruppen_HDF5(v3)
+    popupMenu = OptionMenu(root, tkvar, *choices)
+    popupMenu.place(x=350,y=140)
 
     #Insert Button
-    button = Button(root, text='Start', width=25, command=visum_func).place(x=300,y=120)
     button_open = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v1)).place(x=500,y=50)
     button_VISUM = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v2)).place(x=500,y=80)
+    button_HDF5 = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v3)).place(x=500,y=110)
 
+    #Start Button
+    button = Button(root, text='Start', width=25, command=lambda:visum_func.open(v2)).place(x=300,y=250)
 
 #Insert Menu-bar
 menubar = Menu(root)
@@ -78,5 +95,3 @@ w2 = Label(root,justify=LEFT,text=explanation, font=("Calibri", 12, "bold")).pla
 
 #End
 root.mainloop()
-
-

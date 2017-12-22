@@ -9,6 +9,8 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 
+import h5py
+
 def main():
     pass
 
@@ -28,3 +30,14 @@ def ausgeben ():
 def callback(v):
     name = askopenfilename()
     v.set(name)
+    return name
+
+def gruppen_HDF5(Datenbank):
+    Datenbank = Datenbank.get()
+    file5 = h5py.File(Datenbank,'r+') ##HDF5-File
+    gruppen = file5.keys()
+    print gruppen
+    return gruppen
+
+
+##hdf = "V:\\Forschungsprojekte\\laufende Projekte\\MRH-Erreichbarkeit\\09Berechnungen\\01Datenbanken\\MRH_alt.h5"
