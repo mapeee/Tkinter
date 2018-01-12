@@ -34,7 +34,7 @@ def matrizen():
     v3 = StringVar()
     tkvar = StringVar(root)
     tkvar.set("Auswahl")
-    choices = [""]
+    choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
 
     #Insert Field
     Label(root, text="Pfad:",font=("Calibri", 10, "bold")).place(x=300,y=50)
@@ -49,14 +49,13 @@ def matrizen():
 
     #Insert Dropdown
     Label(root, text="Group:",font=("Calibri", 10, "bold")).place(x=300,y=140)
-    choices = lambda:func.gruppen_HDF5(v3)
     popupMenu = OptionMenu(root, tkvar, *choices)
     popupMenu.place(x=350,y=140)
 
     #Insert Button
     button_open = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v1)).place(x=500,y=50)
     button_VISUM = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v2)).place(x=500,y=80)
-    button_HDF5 = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.callback(v3)).place(x=500,y=110)
+    button_HDF5 = Button(root, text='Open',font=("Calibri", 10, "bold"), width=4, command=lambda:func.gruppen_HDF5(v3)).place(x=500,y=110)
 
     #Start Button
     button = Button(root, text='Start', width=25, command=lambda:visum_func.open(v2)).place(x=300,y=250)
@@ -95,3 +94,44 @@ w2 = Label(root,justify=LEFT,text=explanation, font=("Calibri", 12, "bold")).pla
 
 #End
 root.mainloop()
+
+##
+##from Tkinter import *
+##
+##root = Tk()
+##
+##var = StringVar()
+##var.set("Choose a name...")
+##names = []
+##
+### Appends names to names list and updates OptionMenu
+##def createName(n):
+##    names.append(n)
+##    personName.delete(0, "end")
+##    menu = nameMenu['menu']
+##    menu.delete(0, "end")
+##    for name in names:
+##        menu.add_command(label=name, command=lambda name=name: selection(name))
+##
+### what to run when a name is selected
+##def selection(name):
+##    var.set(name)
+##    print "Running"  # For testing purposes to see when/if selection runs
+##    print name
+##
+### Option Menu for names
+##nameMenu = OptionMenu(root, var, ())
+##nameMenu.grid(row=0, column=0, columnspan=2)
+##nameMenu.config(width=20)
+##
+### Entry for user to submit name
+##Label(root, text="Name").grid(row=1, column=0)
+##personName = Entry(root, width=17)
+##personName.grid(row=1, column=1)
+##
+##
+### Add person Button
+##Button(root, text="Add Person", width= 20, command=lambda: createName(personName.get())).grid(row=5, column=0, columnspan=2)
+##
+##
+##mainloop()
