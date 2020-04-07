@@ -18,7 +18,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-##path = "C:\\Users\\mape\\Desktop\\Testnetz_Tarif.ver"
+path = ""
 
 def open(path):
     path = path.get()
