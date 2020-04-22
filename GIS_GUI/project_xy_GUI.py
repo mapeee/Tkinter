@@ -7,7 +7,7 @@ Created on Fri Apr 17 09:22:26 2020
 import tkinter as tk
 from tkinter import filedialog as fd 
 import pandas as pd
-import project
+import project_xy
 from pathlib import Path
 from tkinter import ttk
 
@@ -124,7 +124,7 @@ class MainApplication(tk.Frame):
         self.idselect = self.listboxid.get(self.listboxid.curselection()[0])
         self.xselect = self.listboxx.get(self.listboxx.curselection()[0])
         self.yselect = self.listboxy.get(self.listboxy.curselection()[0]) 
-        self.erg_proj = project.project_table(
+        self.erg_proj = project_xy.project_table(
             self.df, self.idselect, self.xselect,
             self.yselect,self.xcoord, self.ycoord, all_f=self.allcol.get())
         # erg_proj = self.erg_proj
@@ -133,7 +133,7 @@ class MainApplication(tk.Frame):
         self.display.insert("end",self.erg_proj.head())
         self.display.configure(state='disabled')
         
-        tk.Label(self.fr3,text = "finished", pady=10, bg = "green").pack(pady=5) ##geometrymanager grid
+        tk.Label(self.fr3,text = "finished", pady=2, bg = "green").pack(pady=5) ##geometrymanager grid
         
     def end(self):
         self.master.destroy()
