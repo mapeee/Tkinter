@@ -41,20 +41,20 @@ class MainApplication(tk.Frame):
         tk.Button(self.fr1, text="open", command = self.getFile_in).grid(row=1, column=0)
         #in ID
         tk.Label(self.fr1,text = "ID", pady=2, relief = "groove", font='Helvetica 10 bold').grid(row=3, column=0, sticky=("E", "W"))
-        self.id_in = ttk.Combobox(self.fr1, values=[])
-        self.id_in.grid(row=4, column=0, sticky=("N"))
+        self.id_in = ttk.Combobox(self.fr1, values=[], width=40)
+        self.id_in.grid(row=4, column=0, sticky=("N","E","W"))
         #xcoord
         tk.Label(self.fr1,text = "X coord", pady=2, relief = "groove", font='Helvetica 10 bold').grid(row=5, column=0, sticky=("E", "W"))
-        self.x_in = ttk.Combobox(self.fr1, values=[])
-        self.x_in.grid(row=6, column=0, sticky=("N"))
+        self.x_in = ttk.Combobox(self.fr1, values=[], width=40)
+        self.x_in.grid(row=6, column=0, sticky=("N","E","W"))
         #ycoord
         tk.Label(self.fr1,text = "Y coord", pady=2, relief = "groove", font='Helvetica 10 bold').grid(row=7, column=0, sticky=("E", "W"))
-        self.y_in = ttk.Combobox(self.fr1, values=[])
-        self.y_in.grid(row=8, column=0, sticky=("N"))
+        self.y_in = ttk.Combobox(self.fr1, values=[], width=40)
+        self.y_in.grid(row=8, column=0, sticky=("N","E","W"))
         #name
         tk.Label(self.fr1,text = "name", pady=2, relief = "groove", font='Helvetica 10').grid(row=9, column=0, sticky=("E", "W"))
-        self.name_in = ttk.Combobox(self.fr1, values=[],state='disabled')
-        self.name_in.grid(row=10, column=0, sticky=("N"))
+        self.name_in = ttk.Combobox(self.fr1, values=[], width=40,state='disabled')
+        self.name_in.grid(row=10, column=0, sticky=("N","E","W"))
         
         ##pack Frame 1##
         self.fr1.grid(row=0, column=0, rowspan=2, padx=5, pady=5, sticky=("N"))
@@ -70,20 +70,20 @@ class MainApplication(tk.Frame):
         tk.Button(self.fr2, text="open", command = self.getFile_join).grid(row=1, column=0)
         #in ID
         tk.Label(self.fr2,text = "ID", pady=2, relief = "groove", font='Helvetica 10 bold').grid(row=3, column=0, sticky=("E", "W"))
-        self.id_join = ttk.Combobox(self.fr2, values=[])
-        self.id_join.grid(row=4, column=0, sticky=("N"))
+        self.id_join = ttk.Combobox(self.fr2, values=[], width=40)
+        self.id_join.grid(row=4, column=0, sticky=("N","E","W"))
         #xcoord
         tk.Label(self.fr2,text = "X coord", pady=2, relief = "groove", font='Helvetica 10 bold').grid(row=5, column=0, sticky=("E", "W"))
-        self.x_join = ttk.Combobox(self.fr2, values=[])
-        self.x_join.grid(row=6, column=0, sticky=("N"))
+        self.x_join = ttk.Combobox(self.fr2, values=[], width=40)
+        self.x_join.grid(row=6, column=0, sticky=("N","E","W"))
         #ycoord
         tk.Label(self.fr2,text = "Y coord", pady=2, relief = "groove", font='Helvetica 10 bold').grid(row=7, column=0, sticky=("E", "W"))
-        self.y_join = ttk.Combobox(self.fr2, values=[])
-        self.y_join.grid(row=8, column=0, sticky=("N"))
+        self.y_join = ttk.Combobox(self.fr2, values=[], width=40)
+        self.y_join.grid(row=8, column=0, sticky=("N","E","W"))
         #name
         tk.Label(self.fr2,text = "name", pady=2, relief = "groove", font='Helvetica 10').grid(row=9, column=0, sticky=("E", "W"))
-        self.name_join = ttk.Combobox(self.fr2, values=[],state='disabled')
-        self.name_join.grid(row=10, column=0, sticky=("N"))
+        self.name_join = ttk.Combobox(self.fr2, values=[], width=40,state='disabled')
+        self.name_join.grid(row=10, column=0, sticky=("N","E","W"))
 
         ##pack Frame 2##
         self.fr2.grid(row=0, column=1, rowspan=2, padx=5, pady=5, sticky=("N"))
@@ -104,14 +104,12 @@ class MainApplication(tk.Frame):
         self.o_sum.grid(row=2, column=0, columnspan=2, sticky=("N", "W"))
         #value field
         tk.Label(self.fr3, text="sum field").grid(row=3, column=1, sticky=("E"))
-        self.v_field = ttk.Combobox(self.fr3, values=[], width = 12,state='disabled')
+        self.v_field = ttk.Combobox(self.fr3, values=[], width = 20,state='disabled')
         self.v_field.grid(row=3, column=0, sticky=("N"))
         #entry
         tk.Label(self.fr3, text="max dist").grid(row=4, column=1, sticky=("E"))
-        self.m_dist = tk.Entry(self.fr3, width=15)
-        self.m_dist.grid(row=4, column=0)
-        
-        
+        self.m_dist = tk.IntVar(value=50000)
+        tk.Entry(self.fr3, width=23, textvariable=self.m_dist).grid(row=4, column=0)
         ##pack Frame 3##
         self.fr3.grid(row=0, column=2, padx=5, pady=5, sticky=("N"))
         
@@ -121,52 +119,48 @@ class MainApplication(tk.Frame):
         self.fr4 = tk.Frame(self.master)
         tk.Label(self.fr4,text = "about", pady=2, font='Helvetica 10 bold').grid(
             row=0, column=0, sticky=("E", "W"))
-        
         ##text picture
         self.pic1 = tk.PhotoImage(file="logo.gif")
         tk.Label(self.fr4, image=self.pic1).grid(row=1, column=0)
-     
         ##pack frame 4##
         self.fr4.grid(row=1, column=2, sticky="S", padx=5, pady=5)
         
         ###############
         ##outer##
         ###############
-        tk.Button(self.master, text="start", command = self.end).grid(row=2, column=0)
+        self.start_button = tk.Button(self.master, text="start", command = self.s_join)
+        self.start_button.grid(row=2, column=0)
         tk.Button(self.master, text="close", command = self.end).grid(row=2, column=1)
-        tk.Label(self.master,text = "finished", pady=2, bg = "red").grid(row=2, column=2)
-        self.display = tk.Text(self.master, state="disabled", height=15, width=60)
+        self.finish = tk.Label(self.master,text = "finished", pady=2, bg = "red")
+        self.finish.grid(row=2, column=2)
+        self.display = tk.Text(self.master, state="disabled", height=12, width=150)
         self.display.grid(row=3, column=0, columnspan=3)
         
- 
     #############
     ##functions##
     #############
     def sum_func(self):
-        self.v = self.col_sum.get()
-        if self.v is False:
+        if self.col_sum.get() is False:
             self.v_field.config(state='disabled')
-        else: self.v_field.config(state='normal')
+            self.start_button.config(command = self.s_join)
+        else:
+            self.v_field.config(state='normal')
+            self.start_button.config(command = self.s_join_sum)
                
     def name_func(self):
-        self.n = self.col_name.get()
-        if self.n is False:
+        if self.col_name.get() is False:
             self.name_in.config(state='disabled')
             self.name_join.config(state='disabled')
         else:
             self.name_in.config(state='normal')
             self.name_join.config(state='normal')
-
-    def action(self, event):
-        self.xcoord = self.coordx.get().split("_")[0]
-        self.ycoord = self.coordy.get().split("_")[0]
     
     def saveFile(self):
         try:
             self.dat = fd.asksaveasfilename(
                 initialdir = self.f[0],title = "Dateiauswahl",
                 filetypes = (("Excel files", ".xlsx .xls"),("Textdateien","*.txt"),("Alle Dateien","*.*")))
-            self.erg_proj.to_excel(self.dat+".xlsx") 
+            self.erg_tab.to_excel(self.dat+".xlsx") 
             self.end()
         except IOError: pass
         
@@ -196,8 +190,44 @@ class MainApplication(tk.Frame):
         except IOError: pass
             
     def s_join(self):
-        pass
-              
+        if self.col_name.get() is False:
+            self.erg_tab = spatial_join.sj(self.df_in, self.df_join,
+                                           self.x_in.get(),self.y_in.get(),self.x_join.get(),self.y_join.get(),
+                                           self.id_in.get(),self.id_join.get(),self.m_dist.get())
+        else:
+            self.erg_tab = spatial_join.sj(self.df_in, self.df_join,
+                                           self.x_in.get(),self.y_in.get(),self.x_join.get(),self.y_join.get(),
+                                           self.id_in.get(),self.id_join.get(),self.m_dist.get(),
+                                           name_in = self.name_in.get(), name_join = self.name_join.get())
+
+        self.display.configure(state='normal')
+        self.display.delete('1.0', "end")
+        self.display.insert("end",self.erg_tab.head(10))
+        self.display.configure(state='disabled')
+        
+        self.finish.config(bg = "green")
+    
+    def s_join_sum(self):
+        if self.col_name.get() is False:
+            self.erg_tab = spatial_join.sj_sum(
+                self.df_in, self.df_join,
+                self.x_in.get(),self.y_in.get(),self.x_join.get(),
+                self.y_join.get(),self.id_in.get(),self.m_dist.get(),self.v_field.get())
+             
+        else:
+            self.erg_tab = spatial_join.sj_sum(
+                self.df_in, self.df_join,
+                self.x_in.get(),self.y_in.get(),self.x_join.get(),
+                self.y_join.get(),self.id_in.get(),self.m_dist.get(),self.v_field.get(),
+                name_in = self.name_in.get())
+        
+        self.display.configure(state='normal')
+        self.display.delete('1.0', "end")
+        self.display.insert("end",self.erg_tab.head(10))
+        self.display.configure(state='disabled')
+        
+        self.finish.config(bg = "green")
+          
     def end(self):
         self.master.destroy()
         
