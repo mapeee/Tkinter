@@ -64,10 +64,8 @@ class MainApplication(tk.Frame):
         #combobox
         self.coordx = ttk.Combobox(self.fr2, values=["epsg:31467_GK zone 3", "epsg:25832_UTM 32N"])
         self.coordx.grid(row=1, column=0, sticky=("N"))
-        self.coordx.bind("<<ComboboxSelected>>", self.action)
         self.coordy = ttk.Combobox(self.fr2, values=["epsg:31467_GK zone 3", "epsg:25832_UTM 32N"])
         self.coordy.grid(row=3, column=0, sticky=("N"))
-        self.coordy.bind("<<ComboboxSelected>>", self.action)
         
         #checkbox
         self.allcol = tk.BooleanVar()
@@ -82,17 +80,16 @@ class MainApplication(tk.Frame):
         self.fr3 = tk.Frame(self.master)
         tk.Button(self.fr3, text="start", command = self.project).pack(pady=5)
         tk.Button(self.fr3, text="close", command = self.end).pack(pady=5)
+        self.finish = tk.Label(self.fr3,text = "finished", pady=2, bg = "red")
+        self.finish.pack(pady=5)
+        
         
         self.display = tk.Text(self.fr3, state="disabled", height=15, width=60)
         self.display.pack(fill="both")
         
         #pack Frame 3
         self.fr3.grid(row=1, column=0, columnspan=2, sticky="wens", padx=5, pady=5)
-               
-    def action(self, event):
-        self.xcoord = self.coordx.get().split("_")[0]
-        self.ycoord = self.coordy.get().split("_")[0]
-    
+                 
     def saveFile(self):
         try:
             self.dat = fd.asksaveasfilename(
@@ -124,16 +121,18 @@ class MainApplication(tk.Frame):
         self.idselect = self.listboxid.get(self.listboxid.curselection()[0])
         self.xselect = self.listboxx.get(self.listboxx.curselection()[0])
         self.yselect = self.listboxy.get(self.listboxy.curselection()[0]) 
+        #project_xy
         self.erg_proj = project_xy.project_table(
             self.df, self.idselect, self.xselect,
-            self.yselect,self.xcoord, self.ycoord, all_f=self.allcol.get())
+            self.yselect,self.coordx.get().split("_")[0], self.coordy.get().split("_")[0],
+            all_f=self.allcol.get()) 
         # erg_proj = self.erg_proj
         self.display.configure(state='normal')
         self.display.delete('1.0', "end")
         self.display.insert("end",self.erg_proj.head())
         self.display.configure(state='disabled')
         
-        tk.Label(self.fr3,text = "finished", pady=2, bg = "green").pack(pady=5) ##geometrymanager grid
+        self.finish.config(bg = "green")
         
     def end(self):
         self.master.destroy()
