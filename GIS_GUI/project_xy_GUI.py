@@ -78,14 +78,14 @@ class MainApplication(tk.Frame):
          
         ##frame 3
         self.fr3 = tk.Frame(self.master)
-        tk.Button(self.fr3, text="start", command = self.project).pack(pady=5)
-        tk.Button(self.fr3, text="close", command = self.end).pack(pady=5)
+        tk.Button(self.fr3, text="start", command = self.project).grid(row=0, column=0, sticky="wens", padx=5, pady=5)
+        tk.Button(self.fr3, text="close", command = self.end).grid(row=0, column=1, sticky="wens", padx=5, pady=5)
         self.finish = tk.Label(self.fr3,text = "finished", pady=2, bg = "red")
-        self.finish.pack(pady=5)
+        self.finish.grid(row=0, column=2, sticky="wens", padx=5, pady=5)
         
         
-        self.display = tk.Text(self.fr3, state="disabled", height=15, width=60)
-        self.display.pack(fill="both")
+        self.display = tk.Text(self.fr3, state="disabled", height=15, width=120)
+        self.display.grid(row=1, column=0, columnspan=3, sticky="wens", padx=5, pady=5)
         
         #pack Frame 3
         self.fr3.grid(row=1, column=0, columnspan=2, sticky="wens", padx=5, pady=5)
@@ -95,7 +95,7 @@ class MainApplication(tk.Frame):
             self.dat = fd.asksaveasfilename(
                 initialdir = self.f[0],title = "Dateiauswahl",
                 filetypes = (("Excel files", ".xlsx .xls"),("Textdateien","*.txt"),("Alle Dateien","*.*")))
-            self.erg_proj.to_excel(self.dat+".xlsx") 
+            self.erg_proj.to_excel(self.dat+".xlsx",index=False) 
             self.end()
         except IOError: pass
         
@@ -129,7 +129,7 @@ class MainApplication(tk.Frame):
         # erg_proj = self.erg_proj
         self.display.configure(state='normal')
         self.display.delete('1.0', "end")
-        self.display.insert("end",self.erg_proj.head())
+        self.display.insert("end",self.erg_proj.head(12))
         self.display.configure(state='disabled')
         
         self.finish.config(bg = "green")

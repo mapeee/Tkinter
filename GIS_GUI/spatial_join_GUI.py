@@ -129,10 +129,10 @@ class MainApplication(tk.Frame):
         ##outer##
         ###############
         self.start_button = tk.Button(self.master, text="start", command = self.s_join)
-        self.start_button.grid(row=2, column=0)
-        tk.Button(self.master, text="close", command = self.end).grid(row=2, column=1)
+        self.start_button.grid(row=2, column=0, sticky="wens", padx=5, pady=5)
+        tk.Button(self.master, text="close", command = self.end).grid(row=2, column=1, sticky="wens", padx=5, pady=5)
         self.finish = tk.Label(self.master,text = "finished", pady=2, bg = "red")
-        self.finish.grid(row=2, column=2)
+        self.finish.grid(row=2, column=2, sticky="wens", padx=5, pady=5)
         self.display = tk.Text(self.master, state="disabled", height=12, width=150)
         self.display.grid(row=3, column=0, columnspan=3)
         
@@ -160,7 +160,7 @@ class MainApplication(tk.Frame):
             self.dat = fd.asksaveasfilename(
                 initialdir = self.f[0],title = "Dateiauswahl",
                 filetypes = (("Excel files", ".xlsx .xls"),("Textdateien","*.txt"),("Alle Dateien","*.*")))
-            self.erg_tab.to_excel(self.dat+".xlsx") 
+            self.erg_tab.to_excel(self.dat+".xlsx", index=False) 
             self.end()
         except IOError: pass
         
