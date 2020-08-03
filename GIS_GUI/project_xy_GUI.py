@@ -103,7 +103,7 @@ class MainApplication(tk.Frame):
         try:
             self.dat = fd.askopenfilename(
                 initialdir = self.f[0],title = "Dateiauswahl",
-                filetypes = (("Excel files", ".xlsx .xls"),("Textdateien","*.txt")))
+                filetypes = [("Excel files", ".xlsx .xls"),("Textdateien","*.txt")])
             self.df = pd.read_excel(self.dat)
             
             self.display.configure(state='normal')
