@@ -18,7 +18,7 @@ class MainApplication(tk.Frame):
         
         ##connection to path
         self.f = open(Path.home() / 'python32' / 'python_dir.txt', mode='r')
-        self.path = Path.joinpath(Path(r'C:'+self.f.readline()),'Tkinter','GUI_project.txt')
+        self.path = Path.joinpath(Path(self.f.readline()),'Tkinter','GUI_project.txt')
         self.f = self.path.read_text().split('\n')
         
         ##menubar
